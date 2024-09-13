@@ -1,4 +1,5 @@
-import { colors, fontSize } from "@/constants/tokens";
+import { colors } from './../constants/tokens';
+import { fontSize } from "@/constants/tokens";
 import { StyleSheet } from "react-native";
 
 export const defaultStyles = StyleSheet.create({
@@ -17,5 +18,18 @@ export const utilsStyles = StyleSheet.create({
         borderColor: colors.textMuted,
         borderWidth: StyleSheet.hairlineWidth,
         opacity: .3,
+    },
+    emptyContentText: {
+        ...defaultStyles.container,
+        color: colors.textMuted,
+        textAlign: 'center',
+        marginTop: 10
+    },
+    emptyContentImage: {
+        width: 200,
+        height: 200,
+        alignSelf: 'center',
+        marginTop: 40,
+        opacity: 0.3,
     }
 })
