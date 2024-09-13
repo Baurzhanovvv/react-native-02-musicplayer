@@ -1,20 +1,24 @@
-import { colors } from "@/constants/tokens"
-import { useNavigation } from "expo-router"
-import { useLayoutEffect, useState } from "react"
-import { SearchBarProps } from "react-native-screens"
+import { colors } from '@/constants/tokens'
+import { useNavigation } from 'expo-router'
+import { useLayoutEffect, useState } from 'react'
+import { SearchBarProps } from 'react-native-screens'
 
 const defaultSearchOptions: SearchBarProps = {
     tintColor: colors.primary,
-    hideWhenScrolling: false
+    hideWhenScrolling: false,
 }
 
-export const useNavigationSearch = ({ searchBarOptions }: { searchBarOptions?: SearchBarProps }) => {
-    const [search, setSearch] = useState<string>('');
+export const useNavigationSearch = ({
+    searchBarOptions,
+}: {
+    searchBarOptions?: SearchBarProps
+}) => {
+    const [search, setSearch] = useState('')
 
     const navigation = useNavigation()
 
-    const handleOnChange: SearchBarProps['onChangeText'] = ({ nativeEvent: { text } }) => {
-        setSearch(text);
+    const handleOnChangeText: SearchBarProps['onChangeText'] = ({ nativeEvent: { text } }) => {
+        setSearch(text)
     }
 
     useLayoutEffect(() => {
@@ -22,8 +26,8 @@ export const useNavigationSearch = ({ searchBarOptions }: { searchBarOptions?: S
             headerSearchBarOptions: {
                 ...defaultSearchOptions,
                 ...searchBarOptions,
-                onChangeText: handleOnChange
-            }
+                onChangeText: handleOnChangeText,
+            },
         })
     }, [navigation, searchBarOptions])
 
