@@ -1,7 +1,7 @@
-import { TouchableOpacity, View, ViewStyle } from "react-native";
-import TrackPlayer, { useIsPlaying } from "react-native-track-player"
-import { FontAwesome, FontAwesome6 } from "@expo/vector-icons"
 import { colors } from "@/constants/tokens";
+import { FontAwesome6 } from "@expo/vector-icons";
+import { StyleSheet, TouchableOpacity, View, ViewStyle } from "react-native";
+import TrackPlayer, { useIsPlaying } from "react-native-track-player";
 
 
 type PlayerControlsProps = {
@@ -13,9 +13,7 @@ type PlayerButtonProps = {
     iconSize?: number
 }
 
-
-
-export const PlayPauseButton = ({ style, iconSize }: PlayerButtonProps) => {
+export const PlayPauseButton = ({ style, iconSize = 48 }: PlayerButtonProps) => {
     const { playing } = useIsPlaying();
 
     return (
@@ -30,7 +28,7 @@ export const PlayPauseButton = ({ style, iconSize }: PlayerButtonProps) => {
     )
 }
 
-export const SkipToNextButton = ({ iconSize=30 }: PlayerButtonProps) => {
+export const SkipToNextButton = ({ iconSize = 30 }: PlayerButtonProps) => {
     return (
         <TouchableOpacity
             activeOpacity={0.7}
@@ -41,7 +39,7 @@ export const SkipToNextButton = ({ iconSize=30 }: PlayerButtonProps) => {
     )
 }
 
-export const SkipToPrevButton = ({ iconSize=30 }: PlayerButtonProps) => {
+export const SkipToPrevButton = ({ iconSize = 30 }: PlayerButtonProps) => {
     return (
         <TouchableOpacity
             activeOpacity={0.7}
@@ -51,4 +49,27 @@ export const SkipToPrevButton = ({ iconSize=30 }: PlayerButtonProps) => {
         </TouchableOpacity>
     )
 }
+
+export const PlayerControls = ({ style }: PlayerControlsProps) => {
+    return <View style={[styles.container, style]}>
+        <View style={styles.row}>
+            <SkipToPrevButton />
+
+            <PlayPauseButton style={{ paddingHorizontal: 56 }} />
+
+            <SkipToNextButton />
+        </View>
+    </View>
+}
+
+const styles = StyleSheet.create({
+    container: {
+        width: '100%'
+    },
+    row: {
+        flexDirection: "row",
+        justifyContent: "center",
+        alignItems: 'center'
+    }
+})
 

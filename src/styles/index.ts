@@ -1,6 +1,6 @@
-import { colors } from './../constants/tokens';
 import { fontSize } from "@/constants/tokens";
 import { StyleSheet } from "react-native";
+import { colors } from './../constants/tokens';
 
 export const defaultStyles = StyleSheet.create({
     container: {
@@ -14,6 +14,15 @@ export const defaultStyles = StyleSheet.create({
 })
 
 export const utilsStyles = StyleSheet.create({
+    slider: {
+        height: 7,
+        borderRadius: 16
+    },
+    centeredRow: {
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
     itemSeparator: {
         borderColor: colors.textMuted,
         borderWidth: StyleSheet.hairlineWidth,
