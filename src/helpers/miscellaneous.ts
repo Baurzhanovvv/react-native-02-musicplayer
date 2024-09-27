@@ -1,3 +1,5 @@
+
+
 export const formatSecondsToMinute = (second: number) => {
     const minutes = Math.floor(second / 60);
     const remainingSeconds = Math.floor(second % 60)
@@ -6,4 +8,9 @@ export const formatSecondsToMinute = (second: number) => {
     const formattedSeconds = String(remainingSeconds).padStart(2, '0')
     
     return `${formattedMinutes}:${formattedSeconds}`
+}
+
+
+export const generateTracksListId = (songListName: string, search?: string) => {
+    return `${songListName}${`-${search}`|| ''}`
 }
